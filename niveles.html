@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveles</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="contenedor">
+        <div id="fondo-base-contenedor">
+            <img src="imagenes/fondo-base.png" alt="fondo base" id="fondo-base">
+            <div>
+                <button id="flecha-atras" onclick="goBack()">
+                    <svg width="20px" height="20px" viewBox="0 0 13 10">
+                        <path d="M12,5 L1,5"></path>
+                        <polyline points="5 1 1 5 5 9"></polyline>
+                    </svg>
+                </button>
+                <script>
+                document.getElementById("flecha-atras").addEventListener("click", function() {
+                    window.location.href = "index.html";
+                });
+                </script>
+            </div>
+        </div>
+        <div>
+            <img src="imagenes/niveles-letras.png" alt="titulo niveles" id="titulo-niveles">
+        </div>
+        <!-- niveles -->
+        <div class="card">
+        <div class="card-info">
+            <a href="nivel-1.html">Nivel 1</a>
+        </div>
+        <div class="card-info">
+            <a href="nivel-2.html">Nivel 2</a>
+        </div>
+        <div class="card-info">
+            <a href="nivel-3.html">Nivel 3</a>
+        </div>
+        <div class="card-info">
+            <a href="nivel-4.html">Nivel 4</a>
+        </div>
+        <div class="card-info">
+            <a href="nivel-5.html">Nivel 5</a>
+        </div>
+        <div class="card-info">
+            <a href="nivel-6.html">Nivel 6</a>
+        </div>
+        <div class="card-info">
+            <a href="nivel-7.html">Nivel 7</a>
+        </div>
+        <!-- <div>
+            <button id="pixel-button">LET'S PLAY!</button>
+            <script>
+            document.getElementById("pixel-button").addEventListener("click", function() {
+                window.location.href = "niveles.html";
+            });
+            </script>
+        </div> -->
+    </div>
+</body>
+</html>

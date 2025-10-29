@@ -24,10 +24,16 @@
             <img src="imagenes/laberinto-trasero.png" alt="laberinto trasero" id="laberinto-trasero">
             <img src="imagenes/virus-fondo.png" alt="virus fondo" id="virus-fondo">
             <img src="imagenes/virus-trasero.png" alt="virus trasero" id="virus-trasero">
+            <div>
+                <button id="pixel-button">LET'S PLAY!</button>
+                <script>
+                document.getElementById("pixel-button").addEventListener("click", function() {
+                    window.location.href = "niveles.html";
+                });
+                </script>
+            </div>
         </div>
-        <div>
-            <button id="pixel-button">LET'S PLAY!</button>
-        </div>
+
     </div>
 </body>
 <footer>

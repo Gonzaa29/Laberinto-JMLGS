@@ -42,26 +42,26 @@ body {
 /* ---------- TÍTULOS ---------- */
 #laberinto-fondo {
     position: absolute;
-    top: -15%;
-    left: 18%;
-    width: 50%;
+    top: -16%;
+    left: 15%;
+    width: 55%;
     z-index: 10;
 }
 
 #virus-fondo {
     position: absolute;
-    top: 0%;
-    right: 10%;
-    width: 50%;
+    top: -1%;
+    right: 3%;
+    width: 60%;
     z-index: 10;
 }
 
 /* ---------- NAVE ---------- */
 #nave-fondo {
     position: absolute;
-    top: 19%; /* Ajustado para estar sobre la "R" */
-    right: 32%; /* Ajustado para estar sobre la "R" */
-    width: 8%;
+    top: 19.5%; /* Ajustado para estar sobre la "R" */
+    right: 28.3%; /* Ajustado para estar sobre la "R" */
+    width: 11.6%;
     z-index: 100; /* Mayor z-index para estar sobre el virus-fondo */
 }
 
@@ -132,18 +132,17 @@ body {
 /* ---------- VIRUS PRINCIPAL ---------- */
 #virus-principal {
     position: absolute;
-    bottom: 20%;
-    right: 14%;
-    width: 15%;
+    bottom: 16%;
+    right: 4.7%;
+    width: 40%;
     z-index: 15;
-    filter: invert(67%) sepia(41%) saturate(7486%) hue-rotate(159deg) brightness(92%) contrast(101%);
     filter: drop-shadow(0 0 30px #b700d5);
 }
 
 /* ---------- BOTÓN LET'S PLAY ---------- */
 #pixel-button {
     position: absolute;
-    bottom: 15%;
+    bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 200; /* Por encima de todo */
@@ -160,12 +159,22 @@ body {
     padding: 15px 40px; 
     
     /* Texto */
+    @font-face {
+    font-family: 'DigitalClock'; /* Nombre único para usar en el CSS */
+    src: url('fonts/Clock.woff2') format('woff2'), /* La ruta a tu archivo de fuente */
+        url('fonts/Clock.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'DigitalClock', monospace, 'Courier New', Courier;
+    font-size: 20px;
+    }
+       
     font-family: 'Press Start 2P', monospace, 'Courier New', Courier, monospace;
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
-    
+     */
     /* Comportamiento */
     cursor: pointer;
     transition: all 0.2s ease;

@@ -42,26 +42,26 @@ body {
 /* ---------- TÍTULOS ---------- */
 #laberinto-fondo {
     position: absolute;
-    top: -10%;
-    left: 8%;
-    width: 60%;
+    top: -15%;
+    left: 18%;
+    width: 50%;
     z-index: 10;
 }
 
 #virus-fondo {
     position: absolute;
-    top: 5%;
-    right: 5%;
-    width: 60%;
+    top: 0%;
+    right: 10%;
+    width: 50%;
     z-index: 10;
 }
 
 /* ---------- NAVE ---------- */
 #nave-fondo {
     position: absolute;
-    top: 25.9%; /* Ajustado para estar sobre la "R" */
-    right: 30.5%; /* Ajustado para estar sobre la "R" */
-    width: 11%;
+    top: 19%; /* Ajustado para estar sobre la "R" */
+    right: 32%; /* Ajustado para estar sobre la "R" */
+    width: 8%;
     z-index: 100; /* Mayor z-index para estar sobre el virus-fondo */
 }
 
@@ -69,9 +69,9 @@ body {
 /* Mercurio (pequeño, arriba a la izquierda) */
 #mercurio-fondo {
     position: absolute;
-    top: 35%;
-    left: 14%;
-    width: 4.5%;
+    top: 33%;
+    left: 22%;
+    width: 7%;
     z-index: 5;
 }
 
@@ -79,44 +79,44 @@ body {
 #venus-fondo {
     position: absolute;
     top: 45%;
-    left: 12%;
-    width: 5.5%;
+    left: 14%;
+    width: 10%;
     z-index: 5;
 }
 
 /* Sol (grande, amarillo) */
 #sol-fondo {
     position: absolute;
-    top: 52%;
-    left: 18%;
-    width: 10%;
+    top: 40%;
+    left: 20%;
+    width: 20%;
     z-index: 5;
 }
 
 /* Tierra (azul con verde) */
 #tierra-fondo {
     position: absolute;
-    top: 68%;
-    left: 13%;
-    width: 7%;
+    top: 62%;
+    left: 16%;
+    width: 12%;
     z-index: 5;
 }
 
 /* Marte (rojo pequeño) */
 #marte-fondo {
     position: absolute;
-    top: 75%;
-    left: 21%;
-    width: 5.5%;
+    top: 77%;
+    left: 24%;
+    width: 10%;
     z-index: 5;
 }
 
 /* Júpiter (grande con franjas) */
 #jupiter-fondo {
     position: absolute;
-    top: 82%;
-    left: 30%;
-    width: 11%;
+    top: 80%;
+    left: 28%;
+    width: 17%;
     z-index: 5;
 }
 
@@ -124,8 +124,8 @@ body {
 #saturno-fondo {
     position: absolute;
     top: 87%;
-    left: 43%;
-    width: 10%;
+    left: 40%;
+    width: 14%;
     z-index: 5;
 }
 
@@ -142,14 +142,14 @@ body {
 
 /* ---------- BOTÓN LET'S PLAY ---------- */
 #pixel-button {
-    position: fixed;
+    position: absolute;
     bottom: 15%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 200; /* Por encima de todo */
     
     /* Apariencia */
-    background-color: #ffc400;
+    background-color: #b1068c;
     color: #262626;
     
     /* Forma y Borde */
@@ -173,20 +173,20 @@ body {
 }
 
 #pixel-button:hover {
-    background-color: #ffe066;
+    background-color: #b1068c;
     box-shadow: 0 4px 0 #000, 0 6px 12px rgba(0,0,0,0.3);
     transform: translateX(-50%) translateY(2px);
 }
 
 #pixel-button:active {
-    background-color: #cc9c00; 
+    background-color: #b1068c; 
     box-shadow: 0 2px 0 #000, 0 3px 8px rgba(0,0,0,0.3);
     transform: translateX(-50%) translateY(4px);
 }
 
 /* ---------- FOOTER / CRÉDITOS ---------- */
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 2%;
     left: 50%;
     transform: translateX(-50%);

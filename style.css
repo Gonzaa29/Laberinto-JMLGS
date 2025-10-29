@@ -56,17 +56,18 @@ body {
     z-index: 10;
 }
 
+
+
 /* ---------- NAVE ---------- */
 #nave-fondo {
     position: absolute;
-    top: 19.5%; /* Ajustado para estar sobre la "R" */
-    right: 28.3%; /* Ajustado para estar sobre la "R" */
+    top: 19.5%;
+    right: 28.3%;
     width: 11.6%;
-    z-index: 100; /* Mayor z-index para estar sobre el virus-fondo */
+    z-index: 100;
 }
 
 /* ---------- PLANETAS ---------- */
-/* Mercurio (pequeño, arriba a la izquierda) */
 #mercurio-fondo {
     position: absolute;
     top: 33%;
@@ -75,7 +76,6 @@ body {
     z-index: 5;
 }
 
-/* Venus (naranja pequeño) */
 #venus-fondo {
     position: absolute;
     top: 45%;
@@ -84,7 +84,6 @@ body {
     z-index: 5;
 }
 
-/* Sol (grande, amarillo) */
 #sol-fondo {
     position: absolute;
     top: 40%;
@@ -93,7 +92,6 @@ body {
     z-index: 5;
 }
 
-/* Tierra (azul con verde) */
 #tierra-fondo {
     position: absolute;
     top: 62%;
@@ -102,7 +100,6 @@ body {
     z-index: 5;
 }
 
-/* Marte (rojo pequeño) */
 #marte-fondo {
     position: absolute;
     top: 77%;
@@ -111,7 +108,6 @@ body {
     z-index: 5;
 }
 
-/* Júpiter (grande con franjas) */
 #jupiter-fondo {
     position: absolute;
     top: 80%;
@@ -120,7 +116,6 @@ body {
     z-index: 5;
 }
 
-/* Saturno (con anillos) */
 #saturno-fondo {
     position: absolute;
     top: 87%;
@@ -145,30 +140,21 @@ body {
     bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 200; /* Por encima de todo */
-    
-    /* Apariencia */
+    z-index: 200;
     background-color: #b1068c;
     color: #262626;
-    
-    /* Forma y Borde */
     border: 4px solid black; 
     border-radius: 12px;
-    
-    /* Espaciado */
     padding: 15px 40px; 
-    
-    /* Texto */
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
-    /* Comportamiento */
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0 6px 0 #000, 0 8px 15px rgba(0,0,0,0.3); 
 }
-/* @font-face corregido */
+
 @font-face {
     font-family: 'DigitalClock';
     src: url('fonts/Clock.woff2') format('woff2'),
@@ -194,7 +180,7 @@ footer {
     bottom: 2%;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 150; /* Por encima de las imágenes pero debajo del botón */
+    z-index: 150;
 }
 
 #by-fondo {
@@ -248,7 +234,6 @@ footer {
         width: 9%;
     }
 
-    /* Ajustar planetas en móvil */
     #mercurio-fondo {
         top: 38%;
         left: 10%;
@@ -306,6 +291,20 @@ footer {
     #by-fondo {
         max-width: 22vw;
     }
+    
+    #titulo-niveles {
+        width: 50%;
+    }
+    
+    .niveles-container {
+        top: 30%;
+        gap: 20px;
+    }
+    
+    .card {
+        width: 150px;
+        height: 200px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -343,9 +342,25 @@ footer {
     #by-fondo {
         max-width: 25vw;
     }
+    
+    #titulo-niveles {
+        width: 60%;
+        top: 5%;
+    }
+    
+    .niveles-container {
+        top: 25%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        max-width: 95%;
+    }
+    
+    .card {
+        width: 130px;
+        height: 180px;
+    }
 }
 
-/* Orientación landscape en móviles */
 @media (max-height: 600px) and (orientation: landscape) {
     #pixel-button {
         bottom: 5%;
@@ -372,8 +387,9 @@ footer {
     border: none;
     background: none;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 10000;
 }
+
 #flecha-atras:before {
     content: "";
     position: absolute;
@@ -381,7 +397,7 @@ footer {
     left: 0;
     display: block;
     border-radius: 50px;
-    background:#447ef2;
+    background: #447ef2;
     width: 45px;
     height: 45px;
     transition: all 0.3s ease;
@@ -410,61 +426,5 @@ footer {
 #flecha-atras:active {
     transform: scale(0.95);
 }
-/*-----------------tarjetas niveles----------------*/
-.card {
- --background: linear-gradient(to left, #447ef2, #05f2db 100%);
- width: 190px;
- height: 254px;
- padding: 5px;
- border-radius: 1rem;
- overflow: visible;
- background: #447ef2;
- background: var(--background);
- position: relative;
- z-index: 1;
-}
 
-.card::after {
- position: absolute;
- content: "";
- top: 30px;
- left: 0;
- right: 0;
- z-index: -1;
- height: 100%;
- width: 100%;
- transform: scale(0.8);
- filter: blur(25px);
- background: #447ef2;
- background: var(--background);
- transition: opacity .5s;
-}
-
-.card-info {
- --color: #f7c5ff;
- background: var(--color);
- color: var(--color);
- display: flex;
- justify-content: center;
- align-items: center;
- width: 100%;
- height: 100%;
- overflow: visible;
- border-radius: .7rem;
-}
-
-.card .title {
- font-weight: bold;
- letter-spacing: .1em;
-}
-
-/*Hover*/
-.card:hover::after {
- opacity: 0;
-}
-
-.card:hover .card-info {
- color: #447ef2;
- transition: color 1s;
-}
 

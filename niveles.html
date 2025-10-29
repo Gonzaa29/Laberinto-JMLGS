@@ -4,60 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niveles</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-niveles.css">
 </head>
 <body>
-    <div id="contenedor">
-        <div id="fondo-base-contenedor">
-            <img src="imagenes/fondo-base.png" alt="fondo base" id="fondo-base">
-            <div>
-                <button id="flecha-atras" onclick="goBack()">
-                    <svg width="20px" height="20px" viewBox="0 0 13 10">
-                        <path d="M12,5 L1,5"></path>
-                        <polyline points="5 1 1 5 5 9"></polyline>
-                    </svg>
-                </button>
-                <script>
-                document.getElementById("flecha-atras").addEventListener("click", function() {
-                    window.location.href = "index.html";
-                });
-                </script>
-            </div>
+    <div id="contenedor-niv">
+        <div id="fondo-base-contenedor-niv">
+            <img src="imagenes/fondo-base.png" alt="fondo base" id="fondo-base-niv">
         </div>
+        
+        <div>
+            <button id="flecha-atras">
+                <svg width="20px" height="20px" viewBox="0 0 13 10">
+                    <path d="M12,5 L1,5"></path>
+                    <polyline points="5 1 1 5 5 9"></polyline>
+                </svg>
+            </button>
+        </div>
+
         <div>
             <img src="imagenes/niveles-letras.png" alt="titulo niveles" id="titulo-niveles">
         </div>
-        <!-- niveles -->
-        <div class="card">
-        <div class="card-info">
-            <a href="nivel-1.html">Nivel 1</a>
+
+        <!-- Contenedor de tarjetas de niveles -->
+        <div class="niveles-container">
+            <a href="nivel-1.html" class="card">
+                <div class="card-info">
+                    <span class="title">Nivel 1</span>
+                </div>
+            </a>
+
+            <a href="nivel-2.html" class="card">
+                <div class="card-info">
+                    <span class="title">Nivel 2</span>
+                </div>
+            </a>
+
+            <a href="nivel-3.html" class="card">
+                <div class="card-info">
+                    <span class="title">Nivel 3</span>
+                </div>
+            </a>
+
+            <a href="nivel-4.html" class="card">
+                <div class="card-info">
+                    <span class="title">Nivel 4</span>
+                </div>
+            </a>
+
+            <a href="nivel-5.html" class="card">
+                <div class="card-info">
+                    <span class="title">Nivel 5</span>
+                </div>
+            </a>
+
+            <a href="nivel-6.html" class="card">
+                <div class="card-info">
+                    <span class="title">Nivel 6</span>
+                </div>
+            </a>
+
+            <a href="nivel-7.html" class="card">
+                <div class="card-info">
+                    <span class="title">Nivel 7</span>
+                </div>
+            </a>
         </div>
-        <div class="card-info">
-            <a href="nivel-2.html">Nivel 2</a>
-        </div>
-        <div class="card-info">
-            <a href="nivel-3.html">Nivel 3</a>
-        </div>
-        <div class="card-info">
-            <a href="nivel-4.html">Nivel 4</a>
-        </div>
-        <div class="card-info">
-            <a href="nivel-5.html">Nivel 5</a>
-        </div>
-        <div class="card-info">
-            <a href="nivel-6.html">Nivel 6</a>
-        </div>
-        <div class="card-info">
-            <a href="nivel-7.html">Nivel 7</a>
-        </div>
-        <!-- <div>
-            <button id="pixel-button">LET'S PLAY!</button>
-            <script>
-            document.getElementById("pixel-button").addEventListener("click", function() {
-                window.location.href = "niveles.html";
-            });
-            </script>
-        </div> -->
     </div>
+
+    <!-- Overlay de transición -->
+    <div class="diagonal-overlay" id="overlay"></div>
+
+    <script>
+        document.getElementById("flecha-atras").addEventListener("click", function() {
+            const overlay = document.getElementById('overlay');
+            overlay.classList.add('active-up');
+            
+            sessionStorage.setItem('fromNiveles', 'true');
+            
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 500);
+        });
+
+        // Animación de entrada cuando llegamos desde index.html
+        window.addEventListener('load', function() {
+            const overlay = document.getElementById('overlay');
+            overlay.classList.add('active-down-reverse');
+            
+            setTimeout(() => {
+                overlay.classList.remove('active-down-reverse');
+            }, 1000);
+        });
+    </script>
 </body>
 </html>

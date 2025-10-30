@@ -290,3 +290,17 @@ body {
         left: -100%;
     }
 }
+body {
+    background: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#gameCanvas {
+    display: block;
+    margin: 0 auto;
+    border: 4px solid #fff;
+    box-shadow: 0 0 20px #00ff91;
+}

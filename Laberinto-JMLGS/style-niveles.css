@@ -1,0 +1,335 @@
+/* Estilos base */
+    /* Estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at top left, #a63ad2, #1d2fa3);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#contenedor-niv {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Fondo base */
+#fondo-base-contenedor-niv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 0;
+}
+
+#fondo-base-niv {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* ---------- TÍTULO NIVELES ---------- */
+#titulo-niveles {
+    position: absolute;
+    top: -16%;
+    left: 23%;
+    width: 55%;
+    z-index: 10;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px) {
+
+#titulo-niveles {
+        width: 55%;
+    }
+}
+/*-----------Flecha atrás------------*/
+#flecha-atras {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 12px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+#flecha-atras:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #447ef2;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+}
+
+#flecha-atras svg {
+    position: relative;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: rgba(61, 23, 115, 1);
+    stroke-width: 2;
+    transform: translateX(0);
+    transition: all 0.3s ease;
+}
+
+#flecha-atras:hover:before {
+    width: 55px;
+    background: linear-gradient(to right, #447ef2, #05f2db);
+}
+
+#flecha-atras:hover svg {
+    transform: translateX(-3px);
+}
+
+#flecha-atras:active {
+    transform: scale(0.95);
+}
+
+/*-----------------tarjetas niveles----------------*/
+.niveles-container {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 85%;
+    padding: 20px;
+    z-index: 100;
+}
+
+.card {
+    --background: linear-gradient(to left, #447ef2, #05f2db 100%);
+    width: 190px;
+    height: 254px;
+    padding: 5px;
+    border-radius: 1rem;
+    overflow: visible;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.card::after {
+    position: absolute;
+    content: "";
+    top: 30px;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    transform: scale(0.8);
+    filter: blur(25px);
+    background: var(--background);
+    transition: opacity .5s;
+}
+
+.card-info {
+    background: #f7c5ff;
+    color: #f7c5ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: .7rem;
+    padding: 15px;
+    gap: 10px;
+}
+
+.card-image {
+    width: 200%;
+    height: auto;
+    max-height: 300%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.card .title {
+    font-weight: bold;
+    letter-spacing: .1em;
+    font-size: 18px;
+    color: #f7c5ff;
+}
+
+/*Hover*/
+.card:hover::after {
+    opacity: 0;
+}
+
+.card:hover .card-info {
+    background: rgba(68, 126, 242, 0.9);
+    transition: background 0.3s ease;
+}
+.card:hover .title {
+    color: white;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card .title {
+    font-weight: bold;
+    letter-spacing: .1em;
+    font-size: 18px;
+    color: #f7c5ff;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.card:hover .card-image {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+/*-----------------transicion diagonal----------------*/
+.diagonal-overlay {
+    position: fixed;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(68, 126, 242, 0.3) 40%, 
+        rgba(68, 126, 242, 0.9) 50%, 
+        rgba(68, 126, 242, 0.3) 60%, 
+        transparent 100%);
+    transform: rotate(45deg);
+    transform-origin: center;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    filter: blur(30px);
+}
+
+.diagonal-overlay.active-down {
+    animation: diagonalSwipeDown 1s ease-in-out forwards;
+}
+
+@keyframes diagonalSwipeDown {
+    0% {
+        opacity: 1;
+        top: -100%;
+        left: -100%;
+    }
+    100% {
+        opacity: 1;
+        top: 100%;
+        left: 100%;
+    }
+}
+
+.diagonal-overlay.active-up {
+    animation: diagonalSwipeUp 1s ease-in-out forwards;
+}
+
+@keyframes diagonalSwipeUp {
+    0% {
+        opacity: 1;
+        top: 100%;
+        left: 100%;
+    }
+    100% {
+        opacity: 1;
+        top: -100%;
+        left: -100%;
+    }
+}
+
+.diagonal-overlay.active-down-reverse {
+    animation: diagonalSwipeDownReverse 1s ease-in-out forwards;
+}
+
+@keyframes diagonalSwipeDownReverse {
+    0% {
+        opacity: 1;
+        top: -100%;
+        left: -100%;
+    }
+    50% {
+        opacity: 1;
+        top: 0%;
+        left: 0%;
+    }
+    100% {
+        opacity: 0;
+        top: 100%;
+        left: 100%;
+    }
+}
+
+.diagonal-overlay.active-up-reverse {
+    animation: diagonalSwipeUpReverse 1s ease-in-out forwards;
+}
+
+@keyframes diagonalSwipeUpReverse {
+    0% {
+        opacity: 1;
+        top: 100%;
+        left: 100%;
+    }
+    50% {
+        opacity: 1;
+        top: 0%;
+        left: 0%;
+    }
+    100% {
+        opacity: 0;
+        top: -100%;
+        left: -100%;
+    }
+}
+body {
+    background: #111;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#gameCanvas {
+    display: block;
+    margin: 0 auto;
+    border: 4px solid #fff;
+    box-shadow: 0 0 20px #00ff91;
+}

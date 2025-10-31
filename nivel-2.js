@@ -1,4 +1,4 @@
-let maze = [
+const maze = [
 "000001101000001101011100000",
 "011101101011101001011101110",
 "011000101101011011011101010",
@@ -22,20 +22,20 @@ let maze = [
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-const tileSize = 30;
+const tileSize = 80; // AUMENTADO de 30 a 50
 
 canvas.width = maze[0].length * tileSize;
 canvas.height = maze.length * tileSize;
 
-let player = { x: 0, y: 18 };
-let exit = { x: 27, y: 10 };
+let player = { x: 1, y: 0 };
+let exit = { x: 22, y: 17 };
 
 // Cargar imágenes
 const virusImg = new Image();
-virusImg.src = "images/virus-fondo.png";
+virusImg.src = "imagenes/virus-principal.png";
 
 const spaceshipImg = new Image();
-spaceshipImg.src = "images/nave-fondo.png";
+spaceshipImg.src = "imagenes/nave-fondo.png";
 
 // Dibujar laberinto
 function draw() {
@@ -84,4 +84,4 @@ virusImg.onload = () => {
     spaceshipImg.onload = () => {
         draw();
     };
-};
+}

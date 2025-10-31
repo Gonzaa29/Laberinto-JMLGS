@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveles</title>
+    <link rel="stylesheet" href="style-niveles.css">
+</head>
+<body>
+    <div id="contenedor-niv">
+        <div id="fondo-base-contenedor-niv">
+            <img src="imagenes/fondo-base.png" alt="fondo base" id="fondo-base-niv">
+        </div>
+        
+        <div>
+            <button id="flecha-atras">
+                <svg width="20px" height="20px" viewBox="0 0 13 10">
+                    <path d="M12,5 L1,5"></path>
+                    <polyline points="5 1 1 5 5 9"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <div>
+            <img src="imagenes/niveles-letras.png" alt="titulo niveles" id="titulo-niveles">
+        </div>
+
+        <!-- Contenedor de tarjetas de niveles -->
+        <div class="niveles-container">
+            <a href="nivel-1.html" class="card">
+                <div class="card-info">
+                    <img src="imagenes/saturno-tarjeta.png" alt="Nivel 1" class="card-image">
+                    <span class="title">Nivel 1
+                        Saturno
+                    </span>
+                    
+                </div>
+            </a>
+
+            <a href="nivel-2.html" class="card">
+                <div class="card-info">
+                    <img src="imagenes/jupiter-tarjeta.png" alt="Nivel 2" class="card-image">
+                    <span class="title">Nivel 2 Jupiter</span>
+                </div>
+            </a>
+
+            <a href="nivel-3.html" class="card">
+                <div class="card-info">
+                    <img src="imagenes/marte-tarjeta.png" alt="Nivel 3" class="card-image">
+                    <span class="title">Nivel 3 Marte</span>
+                </div>
+            </a>
+
+            <a href="nivel-4.html" class="card">
+                <div class="card-info">
+                     <img src="imagenes/tierra-tarjeta.png" alt="Nivel 4" class="card-image">
+                    <span class="title">Nivel 4 Tierra</span>
+                </div>
+            </a>
+
+            <a href="nivel-5.html" class="card">
+                <div class="card-info">
+                    <img src="imagenes/venus-tarjeta.png" alt="Nivel 5" class="card-image">
+                    <span class="title">Nivel 5</span>
+                </div>
+            </a>
+
+            <a href="nivel-6.html" class="card">
+                <div class="card-info">
+                    <img src="imagenes/mercurio-tarjeta.png" alt="Nivel 6" class="card-image">
+                    <span class="title">Nivel 6</span>
+                </div>
+            </a>
+
+            <a href="nivel-7.html" class="card">
+                <div class="card-info">
+                     <img src="imagenes/sol-tarjeta.png" alt="Nivel 7" class="card-image">
+                    <span class="title">Nivel 7</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Overlay de transición -->
+    <div class="diagonal-overlay" id="overlay"></div>
+
+    <script>
+        document.getElementById("flecha-atras").addEventListener("click", function() {
+            const overlay = document.getElementById('overlay');
+            overlay.classList.add('active-up');
+            
+            sessionStorage.setItem('fromNiveles', 'true');
+            
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 500);
+        });
+
+        // Animación de entrada cuando llegamos desde index.html
+        window.addEventListener('load', function() {
+            const overlay = document.getElementById('overlay');
+            overlay.classList.add('active-down-reverse');
+            
+            setTimeout(() => {
+                overlay.classList.remove('active-down-reverse');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

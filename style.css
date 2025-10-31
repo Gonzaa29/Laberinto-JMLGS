@@ -463,3 +463,33 @@ footer {
     object-fit: cover;
     z-index: 1;
 }
+
+#temporizador {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+#boton-reset {
+    background-color: #4ecdc4;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#boton-reset:hover {
+    background-color: #45b7aa;
+    transform: scale(1.05);
+}

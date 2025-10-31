@@ -5,6 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nivel 1</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #temporizador {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        #mensaje-tiempo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        #mensaje-contenido {
+            background-color: #330062;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        #mensaje-contenido h2 {
+            color: #ffffff;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        #boton-reset, #boton-accion {
+            background-color: #de04fb;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #boton-reset:hover, #boton-accion:hover {
+            background-color: #b803cc;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
     <div id="fondo-base-contenedor">
@@ -18,15 +76,53 @@
         </svg>
     </button>
     
+    <div id="temporizador">1:00</div>
+    
+    <div id="mensaje-tiempo">
+        <div id="mensaje-contenido">
+            <h2>¡Se acabó el tiempo!</h2>
+            <button id="boton-reset">RESET</button>
+        </div>
+    </div>
+    
     <div id="contenedor">
         <canvas id="gameCanvas"></canvas>
-        <p>Usa flechas o W,A,S,D para moverte y llega a la nave espacial.</p>
+        <p>Usa flechas o W,A,S,D para moverte y llega a la meta verde. ¡Cuidado con la nave!</p>
     </div>
 
     <script>
         document.getElementById("flecha-atras").addEventListener("click", function() {
             window.location.href = "niveles.html";
         });
+
+        // Temporizador de 1 minuto
+        let tiempoRestante = 60; // Cambia a 60 para el juego real
+        let intervalo;
+        const temporizadorElemento = document.getElementById("temporizador");
+        
+        function iniciarTemporizador() {
+            intervalo = setInterval(() => {
+                tiempoRestante--;
+                
+                const minutos = Math.floor(tiempoRestante / 60);
+                const segundos = tiempoRestante % 60;
+                temporizadorElemento.textContent = `${minutos}:${segundos.toString().padStart(2, '0')}`;
+                
+                if (tiempoRestante <= 0) {
+                    clearInterval(intervalo);
+                    temporizadorElemento.textContent = "0:00";
+                    if (window.gameOver) {
+                        window.gameOver();
+                    }
+                }
+            }, 1000);
+        }
+        
+        document.getElementById("boton-reset").addEventListener("click", function() {
+            location.reload();
+        });
+        
+        iniciarTemporizador();
     </script>
     <script src="nivel-1.js"></script>
 </body>

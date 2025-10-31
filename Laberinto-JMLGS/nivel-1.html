@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="fondo-base-contenedor">
+        <img src="imagenes/saturno-hackaton.png" alt="fondo saturno" id="fondo-saturno">
+    </div>
+    
+    <button id="flecha-atras">
+        <svg width="20px" height="20px" viewBox="0 0 13 10">
+            <path d="M12,5 L1,5"></path>
+            <polyline points="5 1 1 5 5 9"></polyline>
+        </svg>
+    </button>
+    
+    <div id="contenedor">
+        <canvas id="gameCanvas"></canvas>
+        <p>Usa flechas o W,A,S,D para moverte y llega a la nave espacial.</p>
+    </div>
+
+    <script>
+        document.getElementById("flecha-atras").addEventListener("click", function() {
+            window.location.href = "niveles.html";
+        });
+    </script>
+    <script src="nivel-1.js"></script>
+</body>
+</html>

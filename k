@@ -1,3 +1,50 @@
+nivel 1 html <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="contenedor">
+        <div id="fondo-base-contenedor">
+            <img src="imagenes/fondo-base.png" alt="fondo base" id="fondo-base">
+            <div>
+                <button id="flecha-atras" onclick="goBack()">
+                    <svg width="20px" height="20px" viewBox="0 0 13 10">
+                        <path d="M12,5 L1,5"></path>
+                        <polyline points="5 1 1 5 5 9"></polyline>
+                    </svg>
+                </button>
+                <script>
+                document.getElementById("flecha-atras").addEventListener("click", function() {
+                    window.location.href = "niveles.html";
+                    
+                });
+                
+                </script>
+                <canvas id="gameCanvas"></canvas>
+<p>Usa flechas o WASD para moverte y llega a la nave espacial.</p>
+
+<script src="nivel-1.js"></script>
+            </div>
+        </div>
+        <!-- <div>
+            <button id="pixel-button">LET'S PLAY!</button>
+            <script>
+            document.getElementById("pixel-button").addEventListener("click", function() {
+                window.location.href = "niveles.html";
+            });
+            </script>
+        </div> -->
+    </div>
+</body>
+</html> 
+
+
+
+js n1
 const maze = [
 "010000000000000001110111111",
 "010111011010110101110110100",
@@ -21,7 +68,7 @@ const maze = [
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-const tileSize = 80; // AUMENTADO de 30 a 50
+const tileSize = 30;
 
 canvas.width = maze[0].length * tileSize;
 canvas.height = maze.length * tileSize;
@@ -31,10 +78,10 @@ let exit = { x: 22, y: 17 };
 
 // Cargar imágenes
 const virusImg = new Image();
-virusImg.src = "imagenes/virus-principal.png";
+virusImg.src = "images/virus-fondo.png";
 
 const spaceshipImg = new Image();
-spaceshipImg.src = "imagenes/nave-fondo.png";
+spaceshipImg.src = "images/nave-fondo.png";
 
 // Dibujar laberinto
 function draw() {
@@ -83,4 +130,5 @@ virusImg.onload = () => {
     spaceshipImg.onload = () => {
         draw();
     };
-}
+};
+

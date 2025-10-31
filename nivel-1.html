@@ -7,37 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="contenedor">
-        <div id="fondo-base-contenedor">
-            <img src="imagenes/fondo-base.png" alt="fondo base" id="fondo-base">
-            <div>
-                <button id="flecha-atras" onclick="goBack()">
-                    <svg width="20px" height="20px" viewBox="0 0 13 10">
-                        <path d="M12,5 L1,5"></path>
-                        <polyline points="5 1 1 5 5 9"></polyline>
-                    </svg>
-                </button>
-                <script>
-                document.getElementById("flecha-atras").addEventListener("click", function() {
-                    window.location.href = "niveles.html";
-                    
-                });
-                
-                </script>
-                <canvas id="gameCanvas"></canvas>
-<p>Usa flechas o WASD para moverte y llega a la nave espacial.</p>
-
-<script src="nivel-1.js"></script>
-            </div>
-        </div>
-        <!-- <div>
-            <button id="pixel-button">LET'S PLAY!</button>
-            <script>
-            document.getElementById("pixel-button").addEventListener("click", function() {
-                window.location.href = "niveles.html";
-            });
-            </script>
-        </div> -->
+    <div id="fondo-base-contenedor">
+        <img src="imagenes/saturno-hackaton.png" alt="fondo saturno" id="fondo-saturno">
     </div>
+    
+    <button id="flecha-atras">
+        <svg width="20px" height="20px" viewBox="0 0 13 10">
+            <path d="M12,5 L1,5"></path>
+            <polyline points="5 1 1 5 5 9"></polyline>
+        </svg>
+    </button>
+    
+    <div id="contenedor">
+        <canvas id="gameCanvas"></canvas>
+        <p>Usa flechas o W,A,S,D para moverte y llega a la nave espacial.</p>
+    </div>
+
+    <script>
+        document.getElementById("flecha-atras").addEventListener("click", function() {
+            window.location.href = "niveles.html";
+        });
+    </script>
+    <script src="nivel-1.js"></script>
 </body>
 </html>

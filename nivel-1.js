@@ -21,20 +21,19 @@ const maze = [
 
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-const tileSize = 80;
+const tileSize = 160;
 
 canvas.width = maze[0].length * tileSize;
 canvas.height = maze.length * tileSize;
 
 let player = { x: 1, y: 0 };
-let enemy = { x: 1, y: 0 }; // La nave empieza donde el virus
-let goal = { x: 22, y: 17 }; // La meta está donde estaba la nave
+let enemy = { x: 1, y: 0 };
+let goal = { x: 22, y: 17 };
 let juegoActivo = true;
 let persecucionActiva = false;
 
-// Almacenar el recorrido del jugador
-let caminoJugador = [{x: 1, y: 0}]; // Empieza con la posición inicial
-let indiceCamino = 0; // Índice que marca dónde está la nave en el camino
+let caminoJugador = [{x: 1, y: 0}];
+let indiceCamino = 0;
 
 // Cargar imágenes
 const virusImg = new Image();
@@ -43,7 +42,38 @@ virusImg.src = "imagenes/virus-principal.png";
 const spaceshipImg = new Image();
 spaceshipImg.src = "imagenes/nave-fondo.png";
 
-// Iniciar persecución después de 2 segundos
+const portalImg = new Image();
+portalImg.src = "imagenes/portal.png";
+
+// Variables para almacenar las dimensiones proporcionales de las imágenes
+let virusDimensions = { width: tileSize, height: tileSize, offsetX: 0, offsetY: 0 };
+let spaceshipDimensions = { width: tileSize, height: tileSize, offsetX: 0, offsetY: 0 };
+let portalDimensions = { width: tileSize, height: tileSize, offsetX: 0, offsetY: 0 };
+
+// Calcular dimensiones proporcionales para una imagen
+function calcularDimensiones(img, maxSize) {
+    const aspectRatio = img.width / img.height;
+    const scale = 1.2; // Usa el 120% del espacio disponible (más grande que la casilla)
+    let width, height, offsetX = 0, offsetY = 0;
+    
+    if (aspectRatio > 1) {
+        // Imagen más ancha que alta
+        width = maxSize * scale;
+        height = (maxSize * scale) / aspectRatio;
+        offsetX = (maxSize - width) / 2;
+        offsetY = (maxSize - height) / 2;
+    } else {
+        // Imagen más alta que ancha
+        height = maxSize * scale;
+        width = (maxSize * scale) * aspectRatio;
+        offsetX = (maxSize - width) / 2;
+        offsetY = (maxSize - height) / 2;
+    }
+    
+    return { width, height, offsetX, offsetY };
+}
+
+// Iniciar persecución después de 4 segundos
 setTimeout(() => {
     persecucionActiva = true;
     console.log("¡La nave comenzó a perseguirte!");
@@ -61,22 +91,34 @@ function draw() {
         }
     }
 
-    // Dibujar meta (un círculo brillante donde estaba la nave)
-    ctx.fillStyle = "#ff00e6ff";
-    ctx.beginPath();
-    ctx.arc(goal.x * tileSize + tileSize/2, goal.y * tileSize + tileSize/2, tileSize/3, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.strokeStyle = "#ff00e6ff";
-    ctx.lineWidth = 3;
-    ctx.stroke();
+    // Dibujar meta (portal)
+    ctx.drawImage(
+        portalImg,
+        goal.x * tileSize + portalDimensions.offsetX,
+        goal.y * tileSize + portalDimensions.offsetY,
+        portalDimensions.width,
+        portalDimensions.height
+    );
 
     // Dibujar enemigo (nave espacial) solo si no está en la misma posición que el jugador
     if (enemy.x !== player.x || enemy.y !== player.y) {
-        ctx.drawImage(spaceshipImg, enemy.x * tileSize, enemy.y * tileSize, tileSize, tileSize);
+        ctx.drawImage(
+            spaceshipImg,
+            enemy.x * tileSize + spaceshipDimensions.offsetX,
+            enemy.y * tileSize + spaceshipDimensions.offsetY,
+            spaceshipDimensions.width,
+            spaceshipDimensions.height
+        );
     }
 
     // Dibujar jugador (virus)
-    ctx.drawImage(virusImg, player.x * tileSize, player.y * tileSize, tileSize, tileSize);
+    ctx.drawImage(
+        virusImg,
+        player.x * tileSize + virusDimensions.offsetX,
+        player.y * tileSize + virusDimensions.offsetY,
+        virusDimensions.width,
+        virusDimensions.height
+    );
 }
 
 // Movimiento del jugador
@@ -90,7 +132,6 @@ function move(dx, dy) {
         player.x = newX;
         player.y = newY;
         
-        // Guardar la nueva posición en el camino
         caminoJugador.push({x: player.x, y: player.y});
     }
 
@@ -108,7 +149,6 @@ function move(dx, dy) {
 function moverEnemigoPorCamino() {
     if (!juegoActivo || !persecucionActiva) return;
     
-    // Si hay más posiciones en el camino para seguir
     if (indiceCamino < caminoJugador.length - 1) {
         indiceCamino++;
         enemy.x = caminoJugador[indiceCamino].x;
@@ -124,7 +164,6 @@ function moverEnemigoPorCamino() {
         draw();
     }
     
-    // Continuar moviendo la nave
     setTimeout(moverEnemigoPorCamino, 200);
 }
 
@@ -140,7 +179,7 @@ function mostrarMensaje(texto, esVictoria) {
     
     document.getElementById("boton-accion").addEventListener("click", function() {
         if (esVictoria) {
-            window.location.href = "nivel-2.html"; // Cambia esto a tu siguiente nivel
+            window.location.href = "nivel-2.html";
         } else {
             location.reload();
         }
@@ -155,12 +194,19 @@ document.addEventListener("keydown", e => {
     if (e.key === "ArrowRight" || e.key === "d") move(1, 0);
 });
 
-// Esperar a que las imágenes carguen antes de dibujar
+// Esperar a que las imágenes carguen y calcular sus dimensiones proporcionales
 virusImg.onload = () => {
+    virusDimensions = calcularDimensiones(virusImg, tileSize);
+    
     spaceshipImg.onload = () => {
-        draw();
+        spaceshipDimensions = calcularDimensiones(spaceshipImg, tileSize);
+        
+        portalImg.onload = () => {
+            portalDimensions = calcularDimensiones(portalImg, tileSize);
+            draw();
+        };
     };
-}
+};
 
 // Exportar función para que el HTML pueda llamarla cuando se acabe el tiempo
 window.gameOver = function() {

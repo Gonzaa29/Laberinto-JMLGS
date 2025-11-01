@@ -1,5 +1,4 @@
 /* Estilos base */
-    /* Estilos base */
 * {
     margin: 0;
     padding: 0;
@@ -53,18 +52,19 @@ body {
 #titulo-niveles {
     position: absolute;
     top: -16%;
-    left: 23%;
+    left: 50%;
+    transform: translateX(-50%);
     width: 55%;
     z-index: 10;
 }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 480px) {
-
-#titulo-niveles {
+    #titulo-niveles {
         width: 55%;
     }
 }
+
 /*-----------Flecha atrás------------*/
 #flecha-atras {
     position: fixed;
@@ -119,12 +119,11 @@ body {
 .niveles-container {
     position: absolute;
     top: 28%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 30%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 190px);
     gap: 25px;
-    max-width: 85%;
+    justify-content: center;
     padding: 20px;
     z-index: 100;
 }
@@ -181,6 +180,7 @@ body {
     object-fit: contain;
     transition: transform 0.3s ease;
 }
+
 .card .title {
     font-weight: bold;
     letter-spacing: .1em;
@@ -197,8 +197,9 @@ body {
     background: rgba(68, 126, 242, 0.9);
     transition: background 0.3s ease;
 }
+
 .card:hover .title {
-    color: white;
+    color: rgb(124, 42, 179);
     opacity: 1;
     transform: translateY(0);
 }
@@ -221,6 +222,7 @@ body {
     transform: scale(1.1);
     filter: brightness(1.1);
 }
+
 /*-----------------transicion diagonal----------------*/
 .diagonal-overlay {
     position: fixed;
@@ -319,6 +321,7 @@ body {
         left: -100%;
     }
 }
+
 body {
     background: #111;
     color: #fff;

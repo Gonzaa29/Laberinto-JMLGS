@@ -179,7 +179,7 @@ function mostrarMensaje(texto, esVictoria) {
     
     document.getElementById("boton-accion").addEventListener("click", function() {
         if (esVictoria) {
-            window.location.href = "nivel-2.html";
+            window.location.href = "nivel-4.html";
         } else {
             location.reload();
         }
